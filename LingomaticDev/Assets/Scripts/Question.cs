@@ -8,4 +8,5 @@ public class Question
     public string question;
     public string answerLeft;
     public string answerRight;
+    public bool leftAnswerIsTrue;
 }

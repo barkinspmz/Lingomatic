@@ -10,19 +10,9 @@ public class QuestionController : MonoBehaviour
 
     public List<Question> playersWrongQuestions = new List<Question>();
 
+
     private void Awake()
     {
         Instance = this;
-    }
-
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
     }
 }

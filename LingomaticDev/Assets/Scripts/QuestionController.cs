@@ -6,8 +6,9 @@ public class QuestionController : MonoBehaviour
 {
     public static QuestionController Instance;
     public Question[] questions;
+    public int questionIndex = 0; 
 
-    public List<Question> wrongQuestions = new List<Question>();
+    public List<Question> playersWrongQuestions = new List<Question>();
 
     private void Awake()
     {

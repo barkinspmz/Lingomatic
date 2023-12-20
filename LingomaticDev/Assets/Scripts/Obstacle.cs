@@ -8,6 +8,7 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         StartCoroutine(ObstacleAnimation());
+        NewQuestionEvent.Instance.generatingNewQuestion += ObstacleOpen;
     }
 
 
@@ -19,6 +20,11 @@ public class Obstacle : MonoBehaviour
         }
     }
     
+    public void ObstacleOpen()
+    {
+        this.transform.gameObject.SetActive(true);
+        StartCoroutine(ObstacleAnimation());
+    }
     IEnumerator ObstacleAnimation()
     {
         while(true)

@@ -8,11 +8,9 @@ public class Platforms : MonoBehaviour
     [SerializeField] private GameObject greenOutline;
     [SerializeField] private GameObject redOutline;
 
-    private Transform startPos;
-
     private void Start()
     {
-        startPos = transform;
+        NewQuestionEvent.Instance.generatingNewQuestion += ResetOutlines;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,8 +30,9 @@ public class Platforms : MonoBehaviour
         }
     }
 
-    public void ResetPosition()
+    public void ResetOutlines()
     {
-        transform.position = startPos.position;
+        greenOutline.SetActive(false);
+        redOutline.SetActive(false);
     }
 }

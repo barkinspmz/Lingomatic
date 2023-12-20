@@ -11,7 +11,7 @@ public class TextManager : MonoBehaviour
     public TextMeshProUGUI rightAnswerText;
     public TextMeshProUGUI questionText;
 
-    public TextMeshProUGUI counterText;
+    public TextMeshProUGUI streakText;
 
     private void Awake()
     {

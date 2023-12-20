@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.srcnalt.openai-unity": {
+      "version": "file:C:/Users/barki/Desktop/SelfProject/Lingomatic/OpenAI-Unity-master",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "6.0.4",
       "depth": 0,
@@ -131,7 +139,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0",
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

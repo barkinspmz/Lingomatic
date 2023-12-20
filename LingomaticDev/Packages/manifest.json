@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.srcnalt.openai-unity": "file:C:/Users/barki/Desktop/SelfProject/Lingomatic/OpenAI-Unity-master",
     "com.unity.2d.animation": "6.0.4",
     "com.unity.2d.pixel-perfect": "5.0.0",
     "com.unity.2d.psdimporter": "5.0.4",

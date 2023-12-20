@@ -8,6 +8,13 @@ public class Platforms : MonoBehaviour
     [SerializeField] private GameObject greenOutline;
     [SerializeField] private GameObject redOutline;
 
+    private Transform startPos;
+
+    private void Start()
+    {
+        startPos = transform;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -23,5 +30,10 @@ public class Platforms : MonoBehaviour
                 //RestartScreen
             }
         }
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPos.position;
     }
 }

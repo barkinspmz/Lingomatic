@@ -11,9 +11,16 @@ public class TextManager : MonoBehaviour
     public TextMeshProUGUI rightAnswerText;
     public TextMeshProUGUI questionText;
 
+    public TextMeshProUGUI counterText;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        UpdateTheAllTheText();
     }
 
     public void UpdateTheAllTheText()

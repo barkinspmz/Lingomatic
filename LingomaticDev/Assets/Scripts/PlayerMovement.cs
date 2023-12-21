@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
 
     public bool isMoving = false;
 
@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
         isMoving = false;
         NewQuestionEvent.Instance.generatingNewQuestion += RestartPos;
         _rb = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -23,10 +22,14 @@ public class PlayerMovement : MonoBehaviour
         if(isMoving && Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             _rb.velocity = new Vector2(_rb.velocity.x - 3.75f, 3.5f);
+            transform.localScale = new Vector2(-1, 1);
+            _animator.SetTrigger("Jump");
         }
         if (isMoving && Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             _rb.velocity = new Vector2(_rb.velocity.x + 3.75f, 3.5f);
+            transform.localScale = new Vector2(1, 1);
+            _animator.SetTrigger("Jump");
         }
     }
 

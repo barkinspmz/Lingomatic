@@ -13,6 +13,7 @@ public class TextManager : MonoBehaviour
 
     public TextMeshProUGUI streakText;
 
+    public TextMeshProUGUI chatGPTTestText;
     private void Awake()
     {
         Instance = this;

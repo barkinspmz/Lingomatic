@@ -20,8 +20,7 @@ public class NewQuestionEvent : MonoBehaviour
         {
             Debug.Log("Restarting");
             generatingNewQuestion.Invoke();
-            QuestionController.Instance.questionIndex++;
-            TextManager.Instance.UpdateTheAllTheText();
         }
     }
+   
 }

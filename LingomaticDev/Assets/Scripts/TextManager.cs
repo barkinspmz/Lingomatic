@@ -19,16 +19,4 @@ public class TextManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        UpdateTheAllTheText();
-    }
-
-    public void UpdateTheAllTheText()
-    {
-        leftAnswerText.text = QuestionController.Instance.questions[QuestionController.Instance.questionIndex].answerLeft;
-        rightAnswerText.text = QuestionController.Instance.questions[QuestionController.Instance.questionIndex].answerRight;
-        questionText.text = QuestionController.Instance.questions[QuestionController.Instance.questionIndex].question;
-    }
-
 }

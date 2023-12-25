@@ -6,7 +6,7 @@ using UnityEngine;
 public class Question 
 {
     public string question;
-    public string answerLeft;
-    public string answerRight;
+    public string answerWrong;
+    public string answerCorrect;
     public bool leftAnswerIsTrue;
 }

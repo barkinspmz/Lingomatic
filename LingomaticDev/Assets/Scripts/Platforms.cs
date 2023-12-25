@@ -17,7 +17,7 @@ public class Platforms : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (QuestionController.Instance.questions[QuestionController.Instance.questionIndex].leftAnswerIsTrue == isLeftPlatform)
+            if (QuestionController.Instance.question.leftAnswerIsTrue == isLeftPlatform)
             {
                 GameObject.Find("Obstacle").SetActive(false);
                 greenOutline.SetActive(true);

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using OpenAI;
+using Unity.VisualScripting;
+
 public class ChatGPTManager : MonoBehaviour
 {
     private OpenAIApi openai = new OpenAIApi();
-    public string prompt = "Give B1 level definition of any word without saying word.";
+    public string prompt = "Give B1 level definition of any word. Do not say word. Only definition.";
 
     void Start()
     {
@@ -13,19 +15,20 @@ public class ChatGPTManager : MonoBehaviour
         NewQuestionEvent.Instance.generatingNewQuestion += SendReply;
     }
 
+    //The models will be depracted on 4th January 2024, these are need to be changed with the most suitable model of OpenAI API.
     private async void SendReply()
     {
         var createCompletionResponseQuestion = await openai.CreateCompletion(new CreateCompletionRequest()
         {
             Prompt = prompt,
-            Model = "text-davinci-003"
+            Model = "gpt-3.5-turbo-instruct"
         });
 
         QuestionController.Instance.question.question = createCompletionResponseQuestion.Choices[0].Text.ToString();
 
         var createCompletionResponseCorrectAnswer = await openai.CreateCompletion(new CreateCompletionRequest()
         {
-            Prompt = "What is this word. Say only word. Definition: "+prompt,
+            Prompt = "Definition: " + QuestionController.Instance.question.question + " Please write only the word.",
             Model = "text-davinci-003"
         });
 
@@ -33,12 +36,13 @@ public class ChatGPTManager : MonoBehaviour
 
         var createCompletionResponseWrongAnswer = await openai.CreateCompletion(new CreateCompletionRequest()
         {
-            Prompt = "Say any B1 level English word. Only word.",
-            Model = "text-davinci-003"
+            Prompt = "Give me random B1 level English word. Please only give me word.",
+            Model = "text-davinci-002"
         });
 
         QuestionController.Instance.question.answerWrong = createCompletionResponseWrongAnswer.Choices[0].Text.ToString();
 
+        TextManager.Instance.questionText.text = QuestionController.Instance.question.question;
         var whichTextWillBeCorrect = Random.Range(0,2);
         if (whichTextWillBeCorrect == 0)
         {

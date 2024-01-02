@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OptionManager : MonoBehaviour
 {
-    
+    [SerializeField] private GameObject[] backgrounds;
     void Start()
     {
         LanguageAndDifficultyOption.currentLanguageOption = LanguageAndDifficultyOption.LanguageOptions.English.ToString();

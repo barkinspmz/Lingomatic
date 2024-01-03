@@ -9,8 +9,17 @@ public class OptionManager : MonoBehaviour
     public GameObject startMenuCanvas;
     void Start()
     {
-        LanguageAndDifficultyOption.currentLanguageOption = LanguageAndDifficultyOption.LanguageOptions.English.ToString();
-        LanguageAndDifficultyOption.currentDifficultyOption = LanguageAndDifficultyOption.DifficultyOption.B1.ToString();
+        
+    }
+
+    public void RestartClick()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void MainMenuClick()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void GoBackToMainMenu()

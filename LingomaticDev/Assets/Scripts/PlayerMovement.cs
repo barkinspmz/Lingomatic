@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         isMoving = false;
-        NewQuestionEvent.Instance.generatingNewQuestion += RestartPos;
         _rb = GetComponent<Rigidbody2D>();
+        NewQuestionEvent.Instance.generatingNewQuestion += RestartPos;
     }
 
     void Update()

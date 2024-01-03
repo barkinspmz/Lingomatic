@@ -7,10 +7,11 @@ using Unity.VisualScripting;
 public class ChatGPTManager : MonoBehaviour
 {
     private OpenAIApi openai = new OpenAIApi();
-    public string prompt = "Give B1 level definition of any word. Do not say word. Only definition.";
+    public string prompt = "Give " + LanguageAndDifficultyOption.currentDifficultyOption + " level definition of any word in " + LanguageAndDifficultyOption.currentLanguageOption + " language. Do not say word. Only definition.";
 
     void Start()
     {
+        Debug.Log(LanguageAndDifficultyOption.currentLanguageOption);
         SendReply();
         NewQuestionEvent.Instance.generatingNewQuestion += SendReply;
     }
@@ -28,7 +29,7 @@ public class ChatGPTManager : MonoBehaviour
 
         var createCompletionResponseCorrectAnswer = await openai.CreateCompletion(new CreateCompletionRequest()
         {
-            Prompt = "Definition: " + QuestionController.Instance.question.question + " Please write only the word.",
+            Prompt = "Definition: " + QuestionController.Instance.question.question + " Please write only the word in " + LanguageAndDifficultyOption.currentLanguageOption +" language. What is this word?",
             Model = "text-davinci-003"
         });
 
@@ -36,7 +37,7 @@ public class ChatGPTManager : MonoBehaviour
 
         var createCompletionResponseWrongAnswer = await openai.CreateCompletion(new CreateCompletionRequest()
         {
-            Prompt = "Give me random B1 level English word. Please only give me word.",
+            Prompt = "Give me random "+ LanguageAndDifficultyOption.currentDifficultyOption + " level "+ LanguageAndDifficultyOption.currentLanguageOption+ " word. Please only give me word.",
             Model = "text-davinci-002"
         });
 

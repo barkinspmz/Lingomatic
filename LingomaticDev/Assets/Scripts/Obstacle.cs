@@ -5,10 +5,15 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstacles;
+    public GameObject allAssets;
+    public GameObject restartOrQuitCanvas;
+    private PlayerMovement playerMovement;
+    public GameObject electricityOnPlayer; 
     void Start()
     {
         StartCoroutine(ObstacleAnimation());
         NewQuestionEvent.Instance.generatingNewQuestion += ObstacleOpen;
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
 
@@ -16,7 +21,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //RestartScreen
+            StartCoroutine(DeadScreen());
         }
     }
     
@@ -42,5 +47,15 @@ public class Obstacle : MonoBehaviour
             obstacles[0].SetActive(true);
 
         }
+    }
+
+    IEnumerator DeadScreen()
+    {
+        electricityOnPlayer.SetActive(true);
+        playerMovement.isMoving = false;
+        playerMovement.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+        yield return new WaitForSeconds(2.5f);
+        restartOrQuitCanvas.SetActive(true);
+          Destroy(allAssets);
     }
 }

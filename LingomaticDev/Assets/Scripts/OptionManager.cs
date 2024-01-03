@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OptionManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] backgrounds;
+    public GameObject optionCanvas;
+    public GameObject startMenuCanvas;
     void Start()
     {
         LanguageAndDifficultyOption.currentLanguageOption = LanguageAndDifficultyOption.LanguageOptions.English.ToString();
@@ -13,13 +15,22 @@ public class OptionManager : MonoBehaviour
 
     public void GoBackToMainMenu()
     {
-
+        optionCanvas.SetActive(false);
+        startMenuCanvas.SetActive(true);
     }
 
     public void ClickingOption()
     {
-
+        optionCanvas.SetActive(true);
+        startMenuCanvas.SetActive(false);
     }
+
+    public void ClickedPlayButton()
+    {
+        var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(sceneIndex + 1);
+    }
+
 
     public void DifficultyChangingToA1()
     {

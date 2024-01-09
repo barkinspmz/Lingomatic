@@ -22,7 +22,8 @@ public class ChatGPTManager : MonoBehaviour
         var createCompletionResponseQuestion = await openai.CreateCompletion(new CreateCompletionRequest()
         {
             Prompt = prompt,
-            Model = "gpt-3.5-turbo-instruct"
+            Model = "gpt-3.5-turbo-instruct",
+            MaxTokens = 100,
         });
 
         QuestionController.Instance.question.question = createCompletionResponseQuestion.Choices[0].Text.ToString();
@@ -30,7 +31,8 @@ public class ChatGPTManager : MonoBehaviour
         var createCompletionResponseCorrectAnswer = await openai.CreateCompletion(new CreateCompletionRequest()
         {
             Prompt = "Definition: " + QuestionController.Instance.question.question + " Please write only the word in " + LanguageAndDifficultyOption.currentLanguageOption +" language. What is this word?",
-            Model = "text-davinci-003"
+            Model = "gpt-3.5-turbo-instruct",
+            MaxTokens = 100,
         });
 
         QuestionController.Instance.question.answerCorrect = createCompletionResponseCorrectAnswer.Choices[0].Text.ToString();
@@ -38,7 +40,8 @@ public class ChatGPTManager : MonoBehaviour
         var createCompletionResponseWrongAnswer = await openai.CreateCompletion(new CreateCompletionRequest()
         {
             Prompt = "Give me random "+ LanguageAndDifficultyOption.currentDifficultyOption + " level "+ LanguageAndDifficultyOption.currentLanguageOption+ " word. Please only give me word.",
-            Model = "text-davinci-002"
+            Model = "gpt-3.5-turbo-instruct",
+            MaxTokens = 100,
         });
 
         QuestionController.Instance.question.answerWrong = createCompletionResponseWrongAnswer.Choices[0].Text.ToString();

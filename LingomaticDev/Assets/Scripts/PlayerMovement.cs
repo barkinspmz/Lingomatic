@@ -10,11 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving = false;
 
     public int streakAmount = 0;
+
+    [SerializeField] private GameObject canvasCardChooser;
     private void Start()
     {
         isMoving = false;
         _rb = GetComponent<Rigidbody2D>();
         NewQuestionEvent.Instance.generatingNewQuestion += RestartPos;
+        NewQuestionEvent.Instance.generatingNewQuestion += CardChooserCanvasOpen;
     }
 
     void Update()
@@ -39,6 +42,14 @@ public class PlayerMovement : MonoBehaviour
         isMoving = false;
         streakAmount++;
         TextManager.Instance.streakText.SetText("X"+streakAmount.ToString());
+    }
+
+    public void CardChooserCanvasOpen()
+    {
+        if (streakAmount % 4 == 0)
+        {
+            canvasCardChooser.SetActive(true);
+        }
     }
 
 }

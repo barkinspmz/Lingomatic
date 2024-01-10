@@ -76,4 +76,5 @@ public class OptionManager : MonoBehaviour
         LanguageAndDifficultyOption.currentLanguageOption = LanguageAndDifficultyOption.LanguageOptions.French.ToString();
     }
 
+
 }

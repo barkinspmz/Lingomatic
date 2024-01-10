@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isMoving = false;
 
-    public int streakAmount = 0;
+    public static int streakAmount = 0;
 
     [SerializeField] private GameObject canvasCardChooser;
     private void Start()
